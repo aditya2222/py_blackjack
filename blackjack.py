@@ -71,21 +71,26 @@ def dealer_card():
     deal_card(player_card_frame)
 
 def player_card():
-    global player_score
-    global player_ace
-    card_value=deal_card(dealer_card_frame)[0]
-    if(card_value == 1 and not player_ace):
-        player_ace = True
-        card_value=11
-    player_score+=card_value
-    # if bust, check for ace and subtract
-    if player_score>21 and player_ace:
-        player_score-=10
-        player_ace = False
+    player_hand.append(deal_card(player_card_frame))
+    player_score = score_hand(player_hand)
     player_score_label.set(player_score)
     if player_score>21:
         result_text.set("Dealer Wins!")
-    print(locals())
+    # global player_score
+    # global player_ace
+    # card_value=deal_card(dealer_card_frame)[0]
+    # if(card_value == 1 and not player_ace):
+    #     player_ace = True
+    #     card_value=11
+    # player_score+=card_value
+    # # if bust, check for ace and subtract
+    # if player_score>21 and player_ace:
+    #     player_score-=10
+    #     player_ace = False
+    # player_score_label.set(player_score)
+    # if player_score>21:
+    #     result_text.set("Dealer Wins!")
+    # print(locals())
 
 def score_hand(hand):
     #calculate the total score of all cards in the list
@@ -93,7 +98,7 @@ def score_hand(hand):
     score =0
     ace = False
     for next_card in hand:
-        card_value = next_card
+        card_value = next_card[0]
         if card_value == 1 and not ace:
             ace = True
             card_value = 11
