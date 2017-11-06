@@ -135,6 +135,7 @@ player_button.grid(row=0, column=1)
 
 player_card()
 dealer_hand.append(deal_card(dealer_card_frame))
+dealer_score_label.set(score_hand(dealer_hand))
 player_card()
 
 
