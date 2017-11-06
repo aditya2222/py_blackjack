@@ -57,7 +57,7 @@ random.shuffle(deck)
 
 
 # create the list to store dealer's and players hands
-delaer_hand=[]
+dealer_hand=[]
 player_hand=[]
 
 def deal_card(frame):
@@ -68,7 +68,20 @@ def deal_card(frame):
 # now return the cards face value
     return next_card
 def dealer_card():
-    deal_card(player_card_frame)
+    dealer_score  = score_hand(dealer_hand)
+    while 0<dealer_score<17:
+        dealer_hand.append(deal_card(dealer_card_frame))
+        dealer_score = score_hand(dealer_hand)
+        dealer_score_label.set(dealer_score)
+    player_score = score_hand(player_hand)
+    if player_score>21:
+        result_text.set("Dealer Wins!")
+    elif dealer_score>21 or dealer_score<player_score:
+        result_text.set("Player Wins!")
+    elif dealer_score>player_score:
+        result_text.set("Dealer WIns!")
+    else:
+        result_text.set("Draw!")
 
 def player_card():
     player_hand.append(deal_card(player_card_frame))
@@ -120,7 +133,9 @@ dealer_button.grid(row=0,column=0)
 player_button = tkinter.Button(button_frame, text="Player",command=player_card)
 player_button.grid(row=0, column=1)
 
-
+player_card()
+dealer_hand.append(deal_card(dealer_card_frame))
+player_card()
 
 
 
