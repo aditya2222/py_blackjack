@@ -1,0 +1,19 @@
+missing module named resource - imported by posix, F:\blackjack\blackjack.py
+missing module named posix - imported by os, F:\blackjack\blackjack.py
+missing module named _posixsubprocess - imported by subprocess, F:\blackjack\blackjack.py
+missing module named 'org.python' - imported by pickle, F:\blackjack\blackjack.py, xml.sax
+missing module named readline - imported by cmd, code, pdb, F:\blackjack\blackjack.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, F:\blackjack\blackjack.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, F:\blackjack\blackjack.py
+missing module named _winreg - imported by platform, F:\blackjack\blackjack.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, F:\blackjack\blackjack.py
+missing module named 'java.lang' - imported by platform, F:\blackjack\blackjack.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, F:\blackjack\blackjack.py
+missing module named termios - imported by tty, F:\blackjack\blackjack.py, getpass
+missing module named grp - imported by tarfile, shutil, F:\blackjack\blackjack.py
+missing module named org - imported by copy, F:\blackjack\blackjack.py
+missing module named pwd - imported by posixpath, tarfile, shutil, http.server, webbrowser, F:\blackjack\blackjack.py, netrc, getpass
+missing module named ce - imported by os, F:\blackjack\blackjack.py
+missing module named _dummy_threading - imported by dummy_threading, F:\blackjack\blackjack.py
+missing module named Tkinter - imported by F:\blackjack\blackjack.py
