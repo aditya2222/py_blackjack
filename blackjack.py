@@ -55,14 +55,11 @@ loadimages(cards)
 deck = list(cards)
 random.shuffle(deck)
 
-
-# create the list to store dealer's and players hands
-dealer_hand=[]
-player_hand=[]
-
 def deal_card(frame):
 # pop the next card off the top of the deck
     next_card = deck.pop(0)
+# store the pooped card at the end of the deck to reuse it in future
+    deck.append(next_card)
 # add the image to a label and display the label
     tkinter.Label(frame,image=next_card[1],relief='raised').pack(side='left')
 # now return the cards face value
@@ -89,21 +86,29 @@ def player_card():
     player_score_label.set(player_score)
     if player_score>21:
         result_text.set("Dealer Wins!")
-    # global player_score
-    # global player_ace
-    # card_value=deal_card(dealer_card_frame)[0]
-    # if(card_value == 1 and not player_ace):
-    #     player_ace = True
-    #     card_value=11
-    # player_score+=card_value
-    # # if bust, check for ace and subtract
-    # if player_score>21 and player_ace:
-    #     player_score-=10
-    #     player_ace = False
-    # player_score_label.set(player_score)
-    # if player_score>21:
-    #     result_text.set("Dealer Wins!")
-    # print(locals())
+def newgame():
+    global dealer_card_frame
+    global player_card_frame
+    global dealer_hand
+    global player_hand
+    # embedded frame to hold the card images
+    dealer_card_frame.destroy()
+    dealer_card_frame = tkinter.Frame(card_frame,background="green")
+    dealer_card_frame.grid(row=0,column=1,sticky='nw',rowspan=2)
+    # embedded frame to hold the card images
+    player_card_frame = tkinter.Frame(card_frame, background="green")
+    player_card_frame.grid(row=2, column=1, sticky="ew", rowspan=2)
+
+    result_text.set("")
+    #create the liest to store dealer's and player's hands
+    dealer_hand=[]
+    player_hand=[]
+    player_card()
+    dealer_hand.append(deal_card(dealer_card_frame))
+    dealer_score_label.set(score_hand(dealer_hand))
+    player_card()
+def shuffle():
+    random.shuffle(deck)
 
 def score_hand(hand):
     #calculate the total score of all cards in the list
@@ -133,12 +138,16 @@ dealer_button.grid(row=0,column=0)
 player_button = tkinter.Button(button_frame, text="Player",command=player_card)
 player_button.grid(row=0, column=1)
 
-player_card()
-dealer_hand.append(deal_card(dealer_card_frame))
-dealer_score_label.set(score_hand(dealer_hand))
-player_card()
+
+newgame_button = tkinter.Button(button_frame,text="New Game",command=newgame)
+newgame_button.grid(row=0,column=3)
 
 
+shuffle_button = tkinter.Button(button_frame,text="shuffle",command=shuffle)
+shuffle_button.grid(row=0,column=4)
+dealer_hand = []
+player_hand = []
+newgame()
 
 
 
